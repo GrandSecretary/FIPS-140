@@ -75,7 +75,7 @@ namespace FIPS_140
                 else if (seriesLength > maxSeriesLength)
                 {
                     maxSeriesLength = seriesLength;
-                    seriesLength = 0;
+                    seriesLength = 1;
                 }  
             }
 
