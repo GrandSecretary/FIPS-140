@@ -18,9 +18,13 @@ FIPS-140 містить 4 етапи перевірки:
 Після запуску коду, консоль може видасть таку інформацію:
 
 Monobit test: True/False
+
 Maximum Length Of Series Test: True/False
+
 Pokker test: True/False
+
 Series Lengths test: True/False
+
 
 The row has (NOT) passed the test!
 Press any key to continue . . .
