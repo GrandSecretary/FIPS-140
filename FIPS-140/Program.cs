@@ -76,11 +76,12 @@ namespace FIPS_140
                 {
                     maxSeriesLength = seriesLength;
                     seriesLength = 1;
-                }  
+                }
+                else maxSeriesLength = 1;
             }
 
             //перевірка умови
-            if (maxSeriesLength >= 32) condition = false;
+            if (maxSeriesLength >= 36) condition = false;
             else condition = true;
 
             return condition;
@@ -178,7 +179,7 @@ namespace FIPS_140
 
                 if (currentOneSeriesLength > 6)
                 {
-                    // Якщо довжина серії одиниць перевищує 6, збільшуємо лічильник для індексу 6
+                    // Якщо довжина серії одиниць перевищує 6, збільшуємо лічильник для індексу 5
                     oneSeriesLengths[5]++; 
                 }
                 else if (currentOneSeriesLength != 0)
@@ -189,7 +190,7 @@ namespace FIPS_140
 
                 if (currentZeroSeriesLength > 6)
                 {
-                    // Якщо довжина серії нулів перевищує 6, збільшуємо лічильник для індексу 6
+                    // Якщо довжина серії нулів перевищує 6, збільшуємо лічильник для індексу 5
                     zeroSeriesLengths[5]++;
                 }
                 else if (currentZeroSeriesLength != 0)
@@ -207,7 +208,7 @@ namespace FIPS_140
             for (int i = 0; i < 6; i++)
             {
                 if ((zeroSeriesLengths[i] < expectedMinLengths[i] || zeroSeriesLengths[i] > expectedMaxLengths[i])
-                    && (oneSeriesLengths[i] < expectedMinLengths[i] || oneSeriesLengths[i] > expectedMaxLengths[i]))
+                    || (oneSeriesLengths[i] < expectedMinLengths[i] || oneSeriesLengths[i] > expectedMaxLengths[i]))
                 {
                     return false; // Якщо довжина серії не потрапляє у відповідний інтервал, повертаємо false
                 }
@@ -216,7 +217,6 @@ namespace FIPS_140
             return true; // Якщо всі довжини серій потрапляють у відповідні інтервали, повертаємо true
 
         }
-
 
         static void Main()
         {
